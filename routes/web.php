@@ -35,5 +35,6 @@ Route::middleware(['admin'])->group(function () {
 		Route::get('/show/{id}', [UserAdminController::class, 'show']);
 		Route::get('/profile/{id}', [UserAdminController::class, 'profile']);
 		Route::post('update/{id}', [UserAdminController::class, 'update']);
+		Route::get('delete/{id}', [UserAdminController::class, 'delete']);
 	});
 });

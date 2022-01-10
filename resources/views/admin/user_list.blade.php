@@ -56,7 +56,7 @@
                                                 <a class="dropdown-item"
                                                     href="{{ URL::to('/user/show/' . $value->id) }}">Detail</a>
                                                 <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#">Delete</a>
+                                                <a class="dropdown-item" href="{{URL::to('/user/delete/' . $value->id)}}">Delete</a>
                                             </div>
                                         </div>
                                     </td>

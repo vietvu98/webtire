@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class UserAdminController extends Controller
 {   
+    // Create User
     public function add() {
         return view('admin.user_add');
     }
@@ -43,17 +44,17 @@ class UserAdminController extends Controller
             return redirect('/user/list')->withSuccess( 'Create successful !' );
         }
     }
-
+    // List User
     public function list() {
         $user_list = User::all();
         return view('admin.user_list')->with('user_list', $user_list);
     }
-
+    // Show User id
     public function show($id) {
         $user_detail = User::where('id', $id)->get();
         return view('admin.user_detail')->with('user_detail', $user_detail);
     }
-
+    // Update User
     public function profile($id) {
         $id = Auth::user()->id;
         $data_user = User::where('id', $id)->get();
@@ -81,5 +82,10 @@ class UserAdminController extends Controller
         }
         $user->save();
         return redirect('/dashboard')->withSuccess( 'Update Profile Successful !' );
+    }
+    //Delete User
+    public function delete($id) {
+        User::where('id', $id)->delete();
+        return redirect('/user/list')->withSuccess('Delete User Successful !');
     }
 }
