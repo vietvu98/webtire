@@ -28,7 +28,12 @@ Route::middleware(['admin'])->group(function () {
 		return view('admin.welcome');
 	});
 	Route::get('/dashboard', [AdminLoginController::class, 'success']);
-	Route::get('/user-add', [UserAdminController::class, 'user_add']);
-	Route::get('/user-list', [UserAdminController::class, 'user_list']);
-	Route::get('/user-detail/{id}', [UserAdminController::class, 'user_detail']);
+	Route::prefix('user')->group(function () {
+		Route::get('/add', [UserAdminController::class, 'add']);
+		Route::post('/store', [UserAdminController::class, 'store']);
+		Route::get('/list', [UserAdminController::class, 'list']);
+		Route::get('/show/{id}', [UserAdminController::class, 'show']);
+		Route::get('/profile/{id}', [UserAdminController::class, 'profile']);
+		Route::post('update/{id}', [UserAdminController::class, 'update']);
+	});
 });

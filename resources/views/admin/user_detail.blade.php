@@ -36,6 +36,10 @@
                                 <td>{{$value->status}}</td>
                             </tr>
                             <tr>
+                                <th>Avatar</th>
+                                <td><img src="{{ asset('upload/avatar/' . $value->image) }}" class="img-thumbnail"></td>
+                            </tr>
+                            <tr>
                                 <th>Created at</th>
                                 <td>{{$value->created_at}}</td>
                             </tr>
