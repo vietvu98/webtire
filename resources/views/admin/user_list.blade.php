@@ -21,8 +21,8 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Birthday</th>
-                                <th>Level</th>
-                                <th>Status</th>
+                                {{-- <th>Level</th>
+                                <th>Status</th> --}}
                                 <th data-orderable="false">Menu</th>
                             </tr>
                         </thead>
@@ -32,8 +32,8 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Birthday</th>
-                                <th>Level</th>
-                                <th>Status</th>
+                                {{-- <th>Level</th>
+                                <th>Status</th> --}}
                                 <th data-orderable="false">Menu</th>
                             </tr>
                         </tfoot>
@@ -44,8 +44,8 @@
                                     <td>{{ $value->name }}</td>
                                     <td>{{ $value->email }}</td>
                                     <td>{{ $value->birthday }}</td>
-                                    <td>{{ $value->level }}</td>
-                                    <td>{{ $value->status }}</td>
+                                    {{-- <td>{{ $value->level }}</td>
+                                    <td>{{ $value->status }}</td> --}}
                                     <td>
                                         <div class="btn-group dropleft">
                                             <button type="button" class="btn btn-primary dropdown-toggle"

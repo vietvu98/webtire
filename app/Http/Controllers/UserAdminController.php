@@ -22,8 +22,8 @@ class UserAdminController extends Controller
         $user->email = $request->txtEmail;
         $user->password = Hash::make($request->txtPassword);
         $user->birthday = $request->dtBirthday;
-        $user->level = $request->listLevel;
-        $user->status = $request->listStatus;
+        // $user->level = $request->listLevel;
+        // $user->status = $request->listStatus;
 
         $this->validate($request, [
             'imgAvatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',

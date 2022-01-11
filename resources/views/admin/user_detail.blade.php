@@ -27,17 +27,17 @@
                                 <th>Password</th>
                                 <td>{{$value->password}}</td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>Level</th>
                                 <td>{{$value->level}}</td>
                             </tr>
                             <tr>
                                 <th>Status</th>
                                 <td>{{$value->status}}</td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>Avatar</th>
-                                <td><img src="{{ asset('upload/avatar/' . $value->image) }}" class="img-thumbnail"></td>
+                                <td><img style="width: 300px; height: 300px;" src="{{ asset('upload/avatar/' . $value->image) }}" class="img-thumbnail"></td>
                             </tr>
                             <tr>
                                 <th>Created at</th>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Middleware\checkAdminLogin;
 use Illuminate\Support\Facades\Route;
@@ -34,7 +35,16 @@ Route::middleware(['admin'])->group(function () {
 		Route::get('/list', [UserAdminController::class, 'list']);
 		Route::get('/show/{id}', [UserAdminController::class, 'show']);
 		Route::get('/profile/{id}', [UserAdminController::class, 'profile']);
-		Route::post('update/{id}', [UserAdminController::class, 'update']);
-		Route::get('delete/{id}', [UserAdminController::class, 'delete']);
+		Route::post('/update/{id}', [UserAdminController::class, 'update']);
+		Route::get('/delete/{id}', [UserAdminController::class, 'delete']);
+	});
+	Route::prefix('post')->group(function () {
+		Route::get('/add', [PostController::class, 'add']);
+		Route::post('/store', [PostController::class, 'store']);
+		Route::get('/list', [PostController::class, 'list']);
+		Route::get('/show/{id}', [PostController::class, 'show']);
+		Route::get('/edit/{id}', [PostController::class, 'edit']);
+		Route::post('/update/{id}', [PostController::class, 'update']);
+		Route::get('/delete/{id}', [PostController::class, 'delete']);
 	});
 });

@@ -40,7 +40,7 @@
                         <input type="text" class="form-control" value="2002/06/06" id="simpleDataInput" name="dtBirthday">
                     </div>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="select2SinglePlaceholder">Level</label>
                     <select class="select2-single-placeholder form-control" name="listLevel" id="select2SinglePlaceholder">
                         <option value="">Select</option>
@@ -63,11 +63,11 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label>Avatar</label>
                         <div class="text-center" id="profile-container">
-                            <img id="profileImage" src="{{ asset('upload/avatar/users.png') }}"
+                            <img style="width: 300px; height: 300px;" id="profileImage" src="{{ asset('upload/avatar/users.png') }}"
                                 class="rounded">
                         </div>
                         <div class="custom-file">

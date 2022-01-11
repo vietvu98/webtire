@@ -19,11 +19,11 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => Hash::make('12345'), // password
+            'password' => Hash::make('1234'), // password
             'birthday' => $this->faker->dateTimeBetween('1990-01-01', '2002-12-31'),
             'remember_token' => Str::random(10),
-            'level' =>'1',
-            'status' => '1'
+            // 'level' =>'1',
+            // 'status' => '1'
         ];
     }
 

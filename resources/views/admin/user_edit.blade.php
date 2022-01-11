@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <label>Avatar</label>
                         <div class="text-center" id="profile-container">
-                            <img id="profileImage" src="{{ asset('upload/avatar/' . $value->image) }}" class="rounded">
+                            <img style="width: 300px; height: 300px;" id="profileImage" src="{{ asset('upload/avatar/' . $value->image) }}" class="rounded">
                         </div>
                         <div class="custom-file">
                           <input type="file" class="custom-file-input" id="imageUpload" name="imgAvatar" placeholder="Avatar">
