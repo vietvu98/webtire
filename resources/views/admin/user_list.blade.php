@@ -46,7 +46,7 @@
                                     <td>{{ $value->birthday }}</td>
                                     {{-- <td>{{ $value->level }}</td>
                                     <td>{{ $value->status }}</td> --}}
-                                    <td>
+                                    <td style="width: 150px;">
                                         <div class="btn-group dropleft">
                                             <button type="button" class="btn btn-primary dropdown-toggle"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,7 +58,7 @@
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item" href="{{URL::to('/user/delete/' . $value->id)}}">Delete</a>
                                             </div>
-                                        </div>
+                                        </div>  
                                     </td>
                                 </tr>
                             @endforeach

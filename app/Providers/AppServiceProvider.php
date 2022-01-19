@@ -2,8 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\PermissionRole;
+use App\Models\Post;
+use App\Policies\PermissionRolePolicy;
+use App\Policies\PostPolicy;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -12,6 +17,12 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    protected $policies = [
+        Post::class => PostPolicy::class,
+        User::class => UserPolicy::class,
+        PermissionRole::class => PermissionRolePolicy::class,
+    ];
+
     public function register()
     {
         //

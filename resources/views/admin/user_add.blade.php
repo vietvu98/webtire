@@ -40,30 +40,15 @@
                         <input type="text" class="form-control" value="2002/06/06" id="simpleDataInput" name="dtBirthday">
                     </div>
                 </div>
-                {{-- <div class="form-group">
-                    <label for="select2SinglePlaceholder">Level</label>
-                    <select class="select2-single-placeholder form-control" name="listLevel" id="select2SinglePlaceholder">
-                        <option value="">Select</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-
-                    </select>
-                </div>
                 <div class="form-group">
-                    <label for="select2SinglePlaceholder1">Status</label>
-                    <select class="select2-single-placeholder form-control" name="listStatus"
-                        id="select2SinglePlaceholder1">
-                        <option value="">Select</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                    <label for="select2Multiple">Role</label>
+                    <select class="select2-multiple form-control" name="roleList[]" multiple="multiple"
+                      id="select2Multiple">
+                      @foreach ($role_data as $key => $role)
+                      <option value="{{$role->id}}">{{$role->name}}</option>
+                      @endforeach
                     </select>
-                </div> --}}
+                  </div>
                 <div class="form-group">
                     <label>Avatar</label>
                         <div class="text-center" id="profile-container">

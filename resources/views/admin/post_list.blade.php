@@ -46,7 +46,12 @@
                                     text-overflow: ellipsis;
                                     -webkit-line-clamp: 6;
                                     -webkit-box-orient: vertical;">{!! nl2br($value->content) !!}</td>
-                                    <td>{{ $value->status }}</td>
+                                    <td> @if ( $value->status == 'published')
+                                        <span class="badge badge-success">Published</span>
+                                        @else
+                                        <span class="badge badge-warning">Draft</span>
+                                        @endif
+                                        </td>
                                     <td><img style="width: 200px; height: 200px;" id="profileImage" src="{{ asset('upload/post/' . $value->image) }}" class="rounded">
                                     </td>
                                     <td>

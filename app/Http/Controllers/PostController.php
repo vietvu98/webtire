@@ -12,11 +12,13 @@ class PostController extends Controller
 {
     // List Post
     public function list() {
+        $this->authorize('viewAny', Post::class);
         $post_list = Post::all();
         return view('admin.post_list')->with('post_list', $post_list);
     }
     // Create Post
     public function add () {
+        $this->authorize('create', Post::class);
         $post_all = User::all();
         return view('admin.post_add')->with('post_all', $post_all);
     }
@@ -45,11 +47,13 @@ class PostController extends Controller
     }
     // Detail Post
     public function show ($id) {
+        $this->authorize('view', Post::class);
         $post_detail = Post::where('id', $id)->get();
         return view('admin.post_detail')->with('post_detail', $post_detail);
     }
     // Edit Post
     public function edit ($id) {
+        $this->authorize('update', Post::class);
         $post_data = Post::where('id', $id)->get();
         $user_data = User::all();
         return view('admin.post_edit', compact('post_data', 'user_data'));
@@ -81,6 +85,7 @@ class PostController extends Controller
     }
     // Delete Post
     public function delete($id) {
+        $this->authorize('delete', Post::class);
         Post::where('id', $id)->delete();
         return redirect('/post/list')->withSuccess('Delete Post Successful !');
     }

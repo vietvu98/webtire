@@ -9,6 +9,7 @@
         <div class="card-body">
             @foreach ($post_data as $key => $value)
             <form action="{{ URL::to('/post/update/' . $value->id) }}" method="post" enctype="multipart/form-data">
+                @method('put')
                 {{ csrf_field() }}
                 @if (count($errors) > 0)
                     @foreach ($errors->all() as $error)

@@ -9,6 +9,7 @@
         <div class="card-body">
             @foreach ($data_user as $item => $value)
                 <form action="{{ URL::to('/user/update/' . $value->id) }}" method="post" enctype="multipart/form-data">
+                    @method('put')
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="txtName">Name</label>

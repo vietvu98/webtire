@@ -1,12 +1,18 @@
 <?php
 namespace App\Traits;
 
+use App\Models\Permission;
 use App\Models\Role;
 
 trait HasPermissions
 {
     protected $permissionList = null;
 
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);
+    }
+    
     public function roles()
     {
         return $this->belongsToMany(Role::class);

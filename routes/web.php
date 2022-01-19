@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\PermissionRoleController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Middleware\checkAdminLogin;
@@ -35,8 +36,9 @@ Route::middleware(['admin'])->group(function () {
 		Route::get('/list', [UserAdminController::class, 'list']);
 		Route::get('/show/{id}', [UserAdminController::class, 'show']);
 		Route::get('/profile/{id}', [UserAdminController::class, 'profile']);
-		Route::post('/update/{id}', [UserAdminController::class, 'update']);
+		Route::put('/update/{id}', [UserAdminController::class, 'update']);
 		Route::get('/delete/{id}', [UserAdminController::class, 'delete']);
+		Route::put('/update-role/{id}', [UserAdminController::class, 'update_role']);
 	});
 	Route::prefix('post')->group(function () {
 		Route::get('/add', [PostController::class, 'add']);
@@ -44,7 +46,14 @@ Route::middleware(['admin'])->group(function () {
 		Route::get('/list', [PostController::class, 'list']);
 		Route::get('/show/{id}', [PostController::class, 'show']);
 		Route::get('/edit/{id}', [PostController::class, 'edit']);
-		Route::post('/update/{id}', [PostController::class, 'update']);
+		Route::put('/update/{id}', [PostController::class, 'update']);
 		Route::get('/delete/{id}', [PostController::class, 'delete']);
+	});
+	Route::prefix('permission')->group(function () {
+		Route::get('/view', [PermissionRoleController::class, 'view_permission']);
+		Route::post('/add-role', [PermissionRoleController::class, 'add_role']);
+		// Route::post('/store', [PermissionRoleController::class, 'permission_role']);
+		Route::get('/edit/{id}', [PermissionRoleController::class, 'permission_edit']);
+		Route::put('/update/{id}', [PermissionRoleController::class, 'permission_update']);
 	});
 });

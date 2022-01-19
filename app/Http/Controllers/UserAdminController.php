@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class UserAdminController extends Controller
 {   
     // Create User
     public function add() {
-        return view('admin.user_add');
+        $this->authorize('create', User::class);
+        $role_data = Role::all();
+        return view('admin.user_add', compact('role_data'));
     }
 
     public function store(Request $request) {
@@ -22,8 +26,6 @@ class UserAdminController extends Controller
         $user->email = $request->txtEmail;
         $user->password = Hash::make($request->txtPassword);
         $user->birthday = $request->dtBirthday;
-        // $user->level = $request->listLevel;
-        // $user->status = $request->listStatus;
 
         $this->validate($request, [
             'imgAvatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -35,7 +37,11 @@ class UserAdminController extends Controller
             $name_image = time().'.'.$file->getClientOriginalName();
             $file->move('upload/avatar', $name_image);
             $user->image = $name_image;
+            $role_id = $request->roleList;
             $user->save();
+            $id = $user->id;
+            $user = User::findOrFail($id);
+            $user->roles()->attach($role_id);
             return redirect('/user/list')->withSuccess( 'Create successful !' );
 
         } else {
@@ -46,14 +52,28 @@ class UserAdminController extends Controller
     }
     // List User
     public function list() {
+        $this->authorize('viewAny', User::class);
         $user_list = User::all();
-        return view('admin.user_list')->with('user_list', $user_list);
+        return view('admin.user_list', compact('user_list'));
     }
     // Show User id
     public function show($id) {
+        $this->authorize('view', User::class);
+        $roles = Role::all();
         $user_detail = User::where('id', $id)->get();
-        return view('admin.user_detail')->with('user_detail', $user_detail);
+        return view('admin.user_detail', compact('user_detail', 'roles'));
     }
+    //Update Role User
+    public function update_role (Request $request, $id) {
+        $user = User::find($id);
+        $user_id = $request->userId;
+        $role_id = $request->roleList;
+        $user = User::findOrFail($user_id);
+        $user->roles()->sync($role_id);
+        
+        return Redirect::back()->with('success','Permission update successfully!');
+    }
+
     // Update User
     public function profile($id) {
         $id = Auth::user()->id;
@@ -84,8 +104,11 @@ class UserAdminController extends Controller
         return redirect('/dashboard')->withSuccess( 'Update Profile Successful !' );
     }
     //Delete User
-    public function delete($id) {
+    public function delete ($id) {
+        $this->authorize('delete', User::class);
         User::where('id', $id)->delete();
         return redirect('/user/list')->withSuccess('Delete User Successful !');
     }
+
+
 }
